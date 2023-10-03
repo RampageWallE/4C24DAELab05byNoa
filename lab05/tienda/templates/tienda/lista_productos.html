@@ -1,0 +1,42 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de productos - Inicio</title>
+    {% bootstrap_css %} 
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1>Lista de productos</h1>
+    <button type="button" class="btn btn-danger"><a style="text-decoration:none; color:white;" href="{% url 'borrar_stock' %}">Borrar todo el stock</a></button><br>
+    <button type="button" class="btn btn-success"><a style="text-decoration:none; color:white;" href="{% url 'aumentar_stock_100u' %}">Aumentar todo el stock en 100 units.</a></button><br>
+    <button type="button" class="btn btn-success"><a style="text-decoration:none; color:white;" href="{% url 'aumentar_precio_1sol' %}">Aumentar todos los precios en 1 sol</a></button>
+    
+        <table class="table table-danger">
+            <thead>
+                <tr>
+                    <th class="table-dark">Categoria</th>
+                    <th class="table-dark">Nombre</th>
+                    <th class="table-dark">Precio</th>
+                    <th class="table-dark">Stock</th>
+                    <th class="table-dark">Fecha de publicacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td scope="col">{{producto.categoria}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.stock}}</td>
+                    <td>{{producto.pub_date}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de categorias - Inicio</title>
+    {% bootstrap_css %} 
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <h1>Lista de categorias</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha de subida</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{categoria.nombre}}</td>
+                <td>{{categoria.pub_date}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    
+</body>
+</html>
